@@ -1,12 +1,36 @@
 import { useForm } from "react-hook-form";
+import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FcGoogle } from 'react-icons/fc';
+import { FaFacebook } from 'react-icons/fa';
 
 
 const SignIn = () => {
+    const { signIn } = useAuth();
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || '/';
+
+
     const onSubmit = data => {
-        
+        const email = data.email;
+        const password = data.password;
+
+        signIn(email, password)
+            .then(res => {
+                const user = res.user;
+                if (user) {
+                    reset();
+                    toast.success("Login Successful");
+                }
+                navigate(from, { replace: true })
+            })
+
     }
 
     return (
@@ -31,11 +55,27 @@ const SignIn = () => {
                                 <input type="password" {...register("password", { required: true })} name="password" placeholder="Enter password" className="input outline-none input-bordered w-full" />
                                 {errors.password && <span className="text-red-600">Password is required</span>}
                             </div>
-                            <div className="flex justify-center mt-5 mb-10">
+                            <div className="flex justify-center my-5">
                                 <input className="px-3 py-2 border cursor-pointer text-lg font-semibold rounded-md w-full md:w-1/2 text-center" type="submit" value="Sign In" />
                             </div>
                         </div>
                     </form>
+
+                    <div className="divider w-full md:w-3/4 mx-auto">OR</div>
+
+                    <div className="flex justify-center md:mx-4 lg:mx-0 ">
+                        <div>
+                            <button className="px-5 flex items-center py-2 border text-lg font-semibold rounded-md  mr-5 text-center"><span className="mr-2"><FcGoogle/></span> Google</button>
+                        </div>
+
+                        <div>
+                            <button className="px-3 flex items-center py-2 border text-lg font-semibold rounded-md text-center"><span className="mr-2"><FaFacebook/></span> Facebook</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p className="text-center mb-10 mt-5">Not yet an account? <Link className="link link-hover" to='/register'>Register</Link></p>
+                    </div>
                 </div>
 
                 <div className="hidden md:block md:order-1">

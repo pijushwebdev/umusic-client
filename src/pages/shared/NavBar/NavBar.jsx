@@ -25,7 +25,7 @@ const NavBar = () => {
                             {navOptions}
                         </ul>
                     </div>
-                    <NavLink to='/' className="p-0 m-0"><img className="w-44 h-20 p-0 m-0" src="https://i.ibb.co/KqjkvVf/inlineguitar.png" alt="" /></NavLink>
+                    <NavLink to='/' className="p-1"><img className="w-36 h-20 p-0 m-0" src="https://i.ibb.co/DLsg5kg/inlineguitar.png" alt="" /></NavLink>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu flex flex-row text-lg items-center justify-center px-1">
