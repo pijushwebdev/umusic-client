@@ -4,15 +4,17 @@ import { toast } from "react-toastify";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from 'react-icons/fc';
 import { FaFacebook } from 'react-icons/fa';
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const SignIn = () => {
-    const { signIn } = useAuth();
+    const { signIn, googleSignIn } = useAuth();
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const location = useLocation();
     const navigate = useNavigate();
+    const [axiosSecure] = useAxiosSecure();
 
     const from = location.state?.from?.pathname || '/';
 
@@ -31,6 +33,22 @@ const SignIn = () => {
                 navigate(from, { replace: true })
             })
 
+    }
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(res => {
+                const loggedUser = res.user;
+                const saveUser = { name: loggedUser.displayName, email: loggedUser.email, image: loggedUser.photoURL };
+
+                axiosSecure.post('/users', saveUser)
+                    .then((data) => {
+                        if(data.data.insertedId){
+                            toast.success("SignUp Successful")
+                        }
+                        navigate(from, { replace: true });
+                    })
+            })
     }
 
     return (
@@ -61,11 +79,15 @@ const SignIn = () => {
                         </div>
                     </form>
 
+                    <div>
+                        <p className="text-center mt-5">Not yet an account? <Link className="link link-hover" to='/register'>Register</Link></p>
+                    </div>
+
                     <div className="divider w-full md:w-3/4 mx-auto">OR</div>
 
-                    <div className="flex justify-center md:mx-4 lg:mx-0 ">
+                    <div className="flex justify-center mb-10 md:mx-4 lg:mx-0 ">
                         <div>
-                            <button className="px-5 flex items-center py-2 border text-lg font-semibold rounded-md  mr-5 text-center"><span className="mr-2"><FcGoogle/></span> Google</button>
+                            <button onClick={handleGoogleSignIn} className="px-5 flex items-center py-2 border text-lg font-semibold rounded-md  mr-5 text-center"><span className="mr-2"><FcGoogle/></span> Google</button>
                         </div>
 
                         <div>
@@ -73,9 +95,7 @@ const SignIn = () => {
                         </div>
                     </div>
 
-                    <div>
-                        <p className="text-center mb-10 mt-5">Not yet an account? <Link className="link link-hover" to='/register'>Register</Link></p>
-                    </div>
+                    
                 </div>
 
                 <div className="hidden md:block md:order-1">

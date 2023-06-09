@@ -10,7 +10,7 @@ const image_hosting_token = import.meta.env.VITE_Image_Token;
 
 const SignUp = () => {
 
-    const { createUser, updateUserProfile } = useAuth();
+    const { createUser, updateUserProfile, logOut } = useAuth();
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [isMatched, setIsMatched] = useState(true);
@@ -54,9 +54,10 @@ const SignUp = () => {
                                         .then(data => {
                                             if (data.data.insertedId) {
                                                 reset();
+                                                logOut();
                                                 toast.success("SignUp Successful")
                                             }
-                                            navigate('/');
+                                            navigate('/login');
                                         })
                                     // console.log(data.data);
                                 })
