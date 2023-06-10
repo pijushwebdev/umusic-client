@@ -17,8 +17,8 @@ const NavBar = () => {
 
 
     const navOptions = <>
-        <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/instructors'>Instructors</NavLink></li>
+        <li className="hover:text-white"><NavLink to='/'>Home</NavLink></li>
+        <li className="hover:text-white"><NavLink to='/instructors'>Instructors</NavLink></li>
         <li><NavLink to='/classes'>Classes</NavLink></li>
         <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
         {
@@ -33,13 +33,13 @@ const NavBar = () => {
     // referrerpolicy="no-referrer"
     return (
         <>
-            <div className="navbar  bg-black bg-opacity-30 max-w-screen-xl text-white">
+            <div className="navbar  bg-black bg-opacity-90 max-w-screen-xl text-white">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-slate-400 rounded-box w-72">
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 z-30 shadow bg-slate-800 rounded-box w-72">
                             {navOptions}
                         </ul>
                     </div>

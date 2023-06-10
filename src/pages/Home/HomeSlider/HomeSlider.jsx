@@ -2,7 +2,7 @@
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import { BsArrowDownShort } from 'react-icons/bs';
-import { Fade, Slide } from "react-awesome-reveal";
+import { Slide } from "react-awesome-reveal";
 
 
 const HomeSlider = () => {

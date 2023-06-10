@@ -3,6 +3,8 @@ import Main from "../layouts/Main";
 import Home from "../pages/Home/Home/Home";
 import SignIn from "../pages/SignIn/SignIn";
 import SignUp from "../pages/SignUp/SignUp";
+import Dashboard from "../layouts/Dashboard";
+import AddClass from "../pages/Instructor/AddClass/AddClass";
 
 export const router = createBrowserRouter([
     {
@@ -20,6 +22,16 @@ export const router = createBrowserRouter([
             {
                 path: 'register',
                 element: <SignUp></SignUp>
+            }
+        ]
+    },
+    {
+        path: 'dashboard',
+        element: <Dashboard></Dashboard>,
+        children: [
+            {
+                path: 'addClass',
+                element: <AddClass></AddClass>
             }
         ]
     }

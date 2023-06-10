@@ -26,15 +26,25 @@
 
 a.active {
     background-color: transparent;
-    color: #DC2751;
+    color: #DC2751 !important;
     font-weight: 700;
     font-size: 1.2rem;
 }
-
+a:hover{
+    color: #DC2751 !important;
+}
 a:focus {
     background-color: transparent !important;
 }
-
+a{
+    color: white;
+}
+p a{
+    color: black;
+}
+li button:hover{
+    color: #DC2751 !important;
+}
 .input:focus {
     outline-style: solid;
     outline-width: 2px;
@@ -42,7 +52,9 @@ a:focus {
     outline-color: transparent;
     border-color: #2A2935;
 }
-
+.divider:after, .divider:before{
+    background-color: white;
+}
 .number-slide1 {
     position: relative;
     overflow: hidden;
