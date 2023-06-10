@@ -1,18 +1,36 @@
 // import React from 'react';
 
 import { NavLink } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const NavBar = () => {
+
+    const {user, logOut} = useAuth();
+
+    const handleLogOut = () => {
+        logOut()
+        .then(() => {
+            toast.success("Logout Successful")
+        })
+    }
+
 
     const navOptions = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/instructors'>Instructors</NavLink></li>
         <li><NavLink to='/classes'>Classes</NavLink></li>
         <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
-        <li><NavLink to='/login'>SignIn</NavLink></li>
-        <li><button>SignOut</button></li>
-        <li><NavLink><img className="rounded-full" src="https://i.ibb.co/BqBLYwL/userpng.png" alt="" /></NavLink></li>
+        {
+            user ? <>
+            <li><button onClick={handleLogOut}>SignOut</button></li>
+            <li><NavLink to='/profile'><img className="rounded-full w-10" title={user?.displayName} src={user?.photoURL} alt="icon" /></NavLink></li>
+            </> : <>
+            <li><NavLink to='/login'>SignIn</NavLink></li>
+            </>
+        }
     </>
+    // referrerpolicy="no-referrer"
     return (
         <>
             <div className="navbar  bg-black bg-opacity-30 max-w-screen-xl text-white">

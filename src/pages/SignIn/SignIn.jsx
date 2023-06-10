@@ -3,15 +3,18 @@ import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from 'react-icons/fc';
-import { FaFacebook } from 'react-icons/fa';
+import { FaFacebook, FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useState } from "react";
 
 
 const SignIn = () => {
-    const { signIn, googleSignIn } = useAuth();
+    const { signIn, googleSignIn, facebookSignIn } = useAuth();
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
+    const [user,setUser] = useState(null);
+    const [show, setShow] = useState(false)
     const location = useLocation();
     const navigate = useNavigate();
     const [axiosSecure] = useAxiosSecure();
@@ -26,6 +29,7 @@ const SignIn = () => {
         signIn(email, password)
             .then(res => {
                 const user = res.user;
+                setUser(user)
                 if (user) {
                     reset();
                     toast.success("Login Successful");
@@ -39,16 +43,36 @@ const SignIn = () => {
         googleSignIn()
             .then(res => {
                 const loggedUser = res.user;
-                const saveUser = { name: loggedUser.displayName, email: loggedUser.email, image: loggedUser.photoURL };
+                setUser(loggedUser)
+                const saveUser = { name: user.displayName, email: user.email, image: user.photoURL };
 
                 axiosSecure.post('/users', saveUser)
                     .then((data) => {
-                        if(data.data.insertedId){
+                        if (data.data.insertedId) {
                             toast.success("SignUp Successful")
                         }
                         navigate(from, { replace: true });
                     })
             })
+    }
+
+    const handleFacebookSignIn = () => {
+        facebookSignIn()
+        .then(res => {
+            const loggedUser = res.user;
+            setUser(loggedUser)
+            // console.log(loggedUser);
+            const saveUser = { name: user.displayName, email: user.email, image: user.photoURL };
+
+            axiosSecure.post('/users', saveUser)
+                .then((data) => {
+                    if (data.data.insertedId) {
+                        toast.success("SignUp Successful")
+                    }
+                    navigate(from, { replace: true });
+                })
+        })
+
     }
 
     return (
@@ -70,8 +94,18 @@ const SignIn = () => {
                                 <label htmlFor="password" className="label">
                                     <span className="label-text font-medium text-base">Password:</span>
                                 </label>
-                                <input type="password" {...register("password", { required: true })} name="password" placeholder="Enter password" className="input outline-none input-bordered w-full" />
-                                {errors.password && <span className="text-red-600">Password is required</span>}
+                                <div className="relative">
+                                    <input type={show ? 'text' : 'password'} {...register("password", { required: true })} name="password" placeholder="Enter password" className="input outline-none input-bordered w-full" />
+                                    <span onClick={() => setShow(!show)} className='absolute cursor-pointer text-xl top-4 right-4'>
+                                        <>
+                                            {
+                                                show ? <FaRegEye /> :
+                                                    <FaRegEyeSlash />
+                                            }
+                                        </>
+                                    </span>
+                                    {errors.password && <span className="text-red-600">Password is required</span>}
+                                </div>
                             </div>
                             <div className="flex justify-center my-5">
                                 <input className="px-3 py-2 border cursor-pointer text-lg font-semibold rounded-md w-full md:w-1/2 text-center" type="submit" value="Sign In" />
@@ -87,15 +121,15 @@ const SignIn = () => {
 
                     <div className="flex justify-center mb-10 md:mx-4 lg:mx-0 ">
                         <div>
-                            <button onClick={handleGoogleSignIn} className="px-5 flex items-center py-2 border text-lg font-semibold rounded-md  mr-5 text-center"><span className="mr-2"><FcGoogle/></span> Google</button>
+                            <button onClick={handleGoogleSignIn} className="px-5 flex items-center py-2 border text-lg font-semibold rounded-md  mr-5 text-center"><span className="mr-2"><FcGoogle /></span> Google</button>
                         </div>
 
                         <div>
-                            <button className="px-3 flex items-center py-2 border text-lg font-semibold rounded-md text-center"><span className="mr-2"><FaFacebook/></span> Facebook</button>
+                            <button onClick={handleFacebookSignIn} className="px-3 flex items-center py-2 border text-lg font-semibold rounded-md text-center"><span className="mr-2"><FaFacebook /></span> Facebook</button>
                         </div>
                     </div>
 
-                    
+
                 </div>
 
                 <div className="hidden md:block md:order-1">

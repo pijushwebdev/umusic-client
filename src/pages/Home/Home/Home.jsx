@@ -1,10 +1,11 @@
+import HomeSlider from "../HomeSlider/HomeSlider";
 
 
 const Home = () => {
     return (
-        <div>
-            <h1 className="text-red-500">This is Home</h1>
-        </div>
+        <>
+            <HomeSlider></HomeSlider>
+        </>
     );
 };
 

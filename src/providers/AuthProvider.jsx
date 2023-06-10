@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import axios from "axios";
 import { app } from "../firebase/firebase.config";
 
@@ -8,6 +8,8 @@ export const AuthContext = createContext(null);
 
 const auth = getAuth(app);
 const googleAuth = new GoogleAuthProvider();
+const facebookAuth = new FacebookAuthProvider();
+
 
 
 const AuthProvider = ({ children }) => {
@@ -32,6 +34,10 @@ const AuthProvider = ({ children }) => {
     const googleSignIn = () => {
         setLoading(true);
         return signInWithPopup(auth,googleAuth);
+    }
+    const facebookSignIn = () => {
+        setLoading(true);
+        return signInWithPopup(auth,facebookAuth);
     }
     const logOut = () => {
         setLoading(true);
@@ -68,6 +74,7 @@ const AuthProvider = ({ children }) => {
         user,
         signIn,
         googleSignIn,
+        facebookSignIn,
         logOut,
         loading
     }
