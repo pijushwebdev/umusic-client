@@ -59,7 +59,6 @@ const SignUp = () => {
                                             }
                                             navigate('/login');
                                         })
-                                    // console.log(data.data);
                                 })
                         }
                     })

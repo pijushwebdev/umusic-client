@@ -15,35 +15,40 @@ const AddClass = () => {
 
     const onSubmit = data => {
 
+        const instructorName = user?.displayName;
+        const email = user?.email;
+
         const formData = new FormData();
         formData.append('image', data.image[0]);
 
-        fetch(image_hosting_url,{
+        fetch(image_hosting_url, {
             method: 'POST',
             body: formData
         })
-        .then(res => res.json())
-        .then(imgRes => {
-            if(imgRes.success){
-                const classImg = imgRes.data.display_url;
+            .then(res => res.json())
+            .then(imgRes => {
+                if (imgRes.success) {
+                    const classImg = imgRes.data.display_url;
 
-                const {className, instructorName,email,availableSeats,price} = data;
-                const classData = {price: parseFloat(price), className,instructorName,email,availableSeats,classImg};
-                axiosSecure.post('/addClassByIns',classData)
-                .then(data => {
-                    if(data.data.insertedId){
-                        reset();
-                        toast.success("Class added successfully")
-                    }
-                })
-                .catch(error => toast.error(error.message))
+                    const { className, availableSeats, price } = data;
+                    const classData = { price: parseFloat(price), className, instructorName, email, seats: parseInt(availableSeats), image: classImg };
+
+                    axiosSecure.post('/addClassByIns', classData)
+                        .then(data => {
+                            if (data.data.insertedId) {
+                                console.log(data.data);
+                                reset();
+                                toast.success("Added successfully");
+                            }
+                        })
+                        
                 }
-        })
+            })
 
     }
     return (
         <>
-            <h1 className="text-4xl text-center font-bold my-10">Sign Up Now!</h1>
+            <h1 className="text-4xl text-center font-bold my-10">Add a Class!</h1>
             <div className="grid grid-cols-1 m-4 md:m-0">
 
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -63,7 +68,7 @@ const AddClass = () => {
                                 <label htmlFor="instructorName" className="label">
                                     <span className="label-text font-medium text-base">Instructor Name:</span>
                                 </label>
-                                <input type="text" disabled {...register("instructorName", { required: true })} name="instructorName" defaultValue={user?.displayName} className="input outline-none input-bordered w-full" />
+                                <input type="text" disabled {...register("instructorName", { required: false })} name="instructorName" defaultValue={user?.displayName} className="input outline-none input-bordered w-full" />
                                 {errors.instructorName && <span className="text-red-600">Instructor name is required</span>}
                             </div>
 
@@ -71,7 +76,7 @@ const AddClass = () => {
                                 <label htmlFor="email" className="label">
                                     <span className="label-text font-medium text-base">Instructor Email:</span>
                                 </label>
-                                <input type="text" {...register("email", { required: true })} name="email" defaultValue={user?.email} disabled className="input outline-none input-bordered w-full" />
+                                <input type="text" {...register("email", { required: false })} name="email" defaultValue={user?.email} disabled className="input outline-none input-bordered w-full" />
                                 {errors.email && <span className="text-red-600">Email is required</span>}
                             </div>
 
@@ -87,15 +92,15 @@ const AddClass = () => {
                                 <label htmlFor="availableSeats" className="label">
                                     <span className="label-text font-medium text-base">Available Seats:</span>
                                 </label>
-                                <input type="text" {...register("availableSeats", { required: true })} name="availableSeats" className="input outline-none input-bordered w-full" />
+                                <input type="number" {...register("availableSeats", { required: true })} name="availableSeats" className="input outline-none input-bordered w-full" placeholder="Available seats" />
                                 {errors.availableSeats && <span className="text-red-600">Available Seats is required</span>}
                             </div>
 
                             <div className="form-control w-full">
                                 <label htmlFor="price" className="label">
-                                    <span className="label-text font-medium text-base">Price:</span>
+                                    <span className="label-text font-medium text-base">Course Fees:</span>
                                 </label>
-                                <input type="text" {...register("price", { required: true })} name="price" className="input outline-none input-bordered w-full" />
+                                <input type="number" {...register("price", { required: true })} name="price" className="input outline-none input-bordered w-full" placeholder="Course fees"/>
                                 {errors.price && <span className="text-red-600">Price is required</span>}
                             </div>
 
@@ -108,7 +113,6 @@ const AddClass = () => {
                         </div>
                     </div>
                 </form>
-
             </div>
         </>
     );

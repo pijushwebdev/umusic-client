@@ -33,7 +33,7 @@ const NavBar = () => {
     // referrerpolicy="no-referrer"
     return (
         <>
-            <div className="navbar  bg-black bg-opacity-90 max-w-screen-xl text-white">
+            <div className="navbar  bg-black bg-opacity-90  text-white">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">

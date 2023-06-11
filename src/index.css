@@ -55,10 +55,6 @@ li button:hover{
 .divider:after, .divider:before{
     background-color: white;
 }
-.number-slide1 {
-    position: relative;
-    overflow: hidden;
-}
 
 .bg-animation {
     animation: anim 10s infinite forwards ease-out;
@@ -85,4 +81,10 @@ li button:hover{
         -ms-transform: scale(1.1);
         -o-transform: scale(1.1);
     }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

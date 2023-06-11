@@ -4,7 +4,8 @@ import Home from "../pages/Home/Home/Home";
 import SignIn from "../pages/SignIn/SignIn";
 import SignUp from "../pages/SignUp/SignUp";
 import Dashboard from "../layouts/Dashboard";
-import AddClass from "../pages/Instructor/AddClass/AddClass";
+import AddClass from "../pages/Dashboard/Instructor/AddClass";
+
 
 export const router = createBrowserRouter([
     {

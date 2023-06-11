@@ -47,11 +47,11 @@ const HomeSlider = () => {
             <div ref={sliderRef} className="keen-slider mb-10">
                 <div className="keen-slider__slide number-slide1 relative ">
 
-                    <div className="max-w-screen-xl overflow-hidden">
-                        <img className="bg-animation " src="https://i.ibb.co/qDnCYRy/modern-microphone.jpg" alt="" />
+                    <div className=" overflow-hidden">
+                        <img className="bg-animation w-full" src="https://i.ibb.co/qDnCYRy/modern-microphone.jpg" alt="" />
                     </div>
 
-                    <div className="absolute left-10 md:top-10 top-0 z-10">
+                    <div className="absolute left-10 md:top-10 lg:top-32 top-0 z-10">
                         <div className="content">
                             <h2 className="lg:text-8xl md:text-4xl text-2xl font-extrabold mt-0 md:mt-10 text-white">Vocal <span className="block">Recording</span></h2>
                         </div>
@@ -72,13 +72,13 @@ const HomeSlider = () => {
 
                 </div>
 
-                <div className="keen-slider__slide number-slide1 relative ">
+                <div className="keen-slider__slide number-slide2 relative ">
 
-                    <div className="max-w-screen-xl overflow-hidden">
-                        <img className="bg-animation " src="https://i.ibb.co/z4Jzkd2/female-student-playing-piano.jpg" alt="" />
+                    <div className=" overflow-hidden">
+                        <img className="bg-animation w-full" src="https://i.ibb.co/z4Jzkd2/female-student-playing-piano.jpg" alt="" />
                     </div>
 
-                    <div className="absolute left-10 md:top-10 top-0 z-10">
+                    <div className="absolute left-10 lg:top-32 md:top-10 top-0 z-10">
                         <div className="content">
                             <h2 className="lg:text-8xl md:text-4xl text-2xl font-extrabold mt-0 md:mt-10 text-white">Piano <span className="block">Courses</span></h2>
                         </div>
@@ -97,13 +97,14 @@ const HomeSlider = () => {
                     </div>
 
                 </div>
-                <div className="keen-slider__slide number-slide1 relative ">
 
-                    <div className="max-w-screen-xl overflow-hidden">
-                        <img className="bg-animation " src="https://i.ibb.co/YWndFwJ/man-with-guitar-darkness.jpg" alt="" />
+                <div className="keen-slider__slide number-slide3 relative ">
+
+                    <div className="overflow-hidden">
+                        <img className="bg-animation w-full" src="https://i.ibb.co/YWndFwJ/man-with-guitar-darkness.jpg" alt="" />
                     </div>
 
-                    <div className="absolute left-10 md:top-10 top-0 z-10">
+                    <div className="absolute left-10 lg:top-32 md:top-10 top-0 z-10">
                         <div className="content">
                             <h2 className="lg:text-8xl md:text-4xl text-2xl font-extrabold mt-0 md:mt-10 text-white">Guitar <span className="block">Courses</span></h2>
                         </div>
