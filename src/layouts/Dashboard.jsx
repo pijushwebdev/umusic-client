@@ -17,8 +17,9 @@ const Dashboard = () => {
         <>
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content  flex flex-col">
-                    <label htmlFor="my-drawer-2" className="drawer-button lg:hidden"> <span className="text-3xl"> <MdMenuOpen /> </span> </label>
+                <div className="drawer-content flex flex-col">
+                    <label htmlFor="my-drawer-2" className="drawer-button cursor-pointer absolute top-5 left-4 lg:hidden"> <span className="text-3xl"> <MdMenuOpen /> </span> </label>
+                    
                     <Outlet></Outlet>
 
                 </div>
@@ -42,13 +43,13 @@ const Dashboard = () => {
 
                                 <li><NavLink to='/dashboard/addClass'><BsBook /> Add Class</NavLink></li>
 
-                                <li><NavLink to='/dashboard/myClasses'><FaBook /> My Classes</NavLink></li>
+                                <li><NavLink to='/dashboard/instructorClass'><FaBook /> My Classes</NavLink></li>
 
                             </> : <>
 
                                 <h1 className="text-white font-semibold text-lg mb-5 text-center">Student Dashboard</h1>
 
-                                <li><NavLink to='/dashboard/selectedClass'><BiBook /> Selected Classes</NavLink></li>
+                                <li><NavLink to='/dashboard/selectedClasses'><BiBook /> Selected Classes</NavLink></li>
                                 <li><NavLink to='/dashboard/paymentHistory'><FaWallet /> Payment History</NavLink></li>
                                 <li><NavLink to='/dashboard/enrolledClasses'><BiBookBookmark /> Enrolled Classes</NavLink></li>
 

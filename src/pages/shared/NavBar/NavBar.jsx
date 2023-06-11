@@ -3,16 +3,22 @@
 import { NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { toast } from "react-toastify";
+import useAdmin from "../../../hooks/useAdmin";
+import useInstructor from "../../../hooks/useInstructor";
 
 const NavBar = () => {
 
-    const {user, logOut} = useAuth();
+    const { user, logOut } = useAuth();
+
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
+
 
     const handleLogOut = () => {
         logOut()
-        .then(() => {
-            toast.success("Logout Successful")
-        })
+            .then(() => {
+                toast.success("Logout Successful")
+            })
     }
 
 
@@ -20,13 +26,17 @@ const NavBar = () => {
         <li className="hover:text-white"><NavLink to='/'>Home</NavLink></li>
         <li className="hover:text-white"><NavLink to='/instructors'>Instructors</NavLink></li>
         <li><NavLink to='/classes'>Classes</NavLink></li>
-        <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
+        <li>
+            {
+                isAdmin ? <NavLink to='/dashboard/manageUsers'>Dashboard</NavLink> : isInstructor ? <NavLink to='/dashboard/addClass'>Dashboard</NavLink> : <NavLink to='/dashboard/selectedClasses'>Dashboard</NavLink>
+            }
+        </li>
         {
             user ? <>
-            <li><button onClick={handleLogOut}>SignOut</button></li>
-            <li><NavLink to='/profile'><img className="rounded-full w-10" title={user?.displayName} src={user?.photoURL} alt="icon" /></NavLink></li>
+                <li><button onClick={handleLogOut}>SignOut</button></li>
+                <li><NavLink to='/profile'><img className="rounded-full w-10" title={user?.displayName} src={user?.photoURL} alt="icon" /></NavLink></li>
             </> : <>
-            <li><NavLink to='/login'>SignIn</NavLink></li>
+                <li><NavLink to='/login'>SignIn</NavLink></li>
             </>
         }
     </>

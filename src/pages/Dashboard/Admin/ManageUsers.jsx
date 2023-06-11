@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { FaChalkboardTeacher, FaTrashAlt, FaUserShield } from "react-icons/fa";
+import SectionTitle from "../../../components/SectionTitle";
 
 
 const ManageUsers = () => {
@@ -87,53 +88,70 @@ const ManageUsers = () => {
             })
     }
     return (
-        <div className="bg-[#F3F3F3] h-full mx-auto w-full">
+        <>
+            <div className="bg-[#F3F3F3] w-full h-full">
 
-            <h1 className="text-4xl text-center font-bold my-10">Manage Users</h1>
+                <SectionTitle heading='Manage All Users' subHeading='Admin'></SectionTitle>
 
-            <div className="flex justify-center">
-                <div className="overflow-x-auto mx-auto scroll-hide bg-white rounded-sm m-5 p-5">
-                    <h1 className="text-2xl font-bold my-3">Total Users: {users.length}</h1>
-                    <table className="table">
-                        {/* head */}
-                        <thead>
-                            <tr className="">
-                                <th></th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Role</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                users.map((user, index) => <tr
-                                    key={user._id}
-                                >
-                                    <td>{index + 1}</td>
-                                    <td>{user.name}</td>
-                                    <td>{user.email}</td>
-                                    <td className="flex gap-2">
-                                        {
-                                            user.role === 'admin' ? 'Admin' : <button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost rounded-full btn-md text-lg bg-orange-500 text-white" title="Make Admin"><FaUserShield></FaUserShield></button>
-                                        }
-                                        {
-                                            user.role === 'instructor' ? 'Instructor' : <button onClick={() => handleMakeInstructor(user)} className="btn btn-ghost rounded-full btn-md text-lg bg-orange-500 text-white" title="Make Instructor"><FaChalkboardTeacher></FaChalkboardTeacher></button>
-                                        }
-                                    </td>
-                                    <td><button onClick={() => handleDelete(user)} className="btn btn-ghost rounded-full btn-md text-lg bg-red-500 text-white" title="Delete"><FaTrashAlt /></button></td>
-                                </tr>)
-                            }
+                <div className="flex justify-center p-2 md:p-0">
 
+                    <div className="overflow-x-auto mx-auto  bg-white rounded-sm m-5 p-5">
+                        <h1 className="text-2xl font-bold my-3">Total Users: {users.length}</h1>
 
+                        <table className="table">
+                            {/* head */}
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                        </tbody>
-                    </table>
+                                {
+                                    users.map((user, index) => <tr
+                                        key={user._id}
+                                    >
+                                        <td>{index + 1}</td>
+                                        <td>
+                                            <div className="flex items-center space-x-3">
+                                                <div className="class image">
+                                                    <div className="mask mask-squircle w-12 h-12">
+                                                        <img src={user.image} alt="image" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>{user.name}</td>
+                                        <td>{user.email}</td>
+                                        <td className="flex items-center gap-2">
+                                            {
+                                                user.role === 'admin' ? 'Admin' : <button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost rounded-full btn-md text-lg bg-orange-500 text-white" title="Make Admin"><FaUserShield></FaUserShield></button>
+                                            }
+                                            {
+                                                user.role === 'instructor' ? 'Instructor' : <button onClick={() => handleMakeInstructor(user)} className="btn btn-ghost rounded-full btn-md text-lg bg-orange-500 text-white" title="Make Instructor"><FaChalkboardTeacher></FaChalkboardTeacher></button>
+                                            }
+                                        </td>
+                                        <td><button onClick={() => handleDelete(user)} className="btn btn-ghost rounded-full btn-md text-lg bg-red-500 text-white" title="Delete"><FaTrashAlt /></button></td>
+                                    </tr>)
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
-            </div>
 
-        </div>
+            </div>
+        </>
+
+
+
     );
 };
 
 export default ManageUsers;
+
