@@ -4,6 +4,8 @@ import SectionTitle from "../../components/SectionTitle";
 import useAdmin from "../../hooks/useAdmin";
 import useInstructor from "../../hooks/useInstructor";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const ApprovedClass = () => {
@@ -11,15 +13,57 @@ const ApprovedClass = () => {
     const [axiosSecure] = useAxiosSecure();
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
-    const {user} = useAuth()
-    
+    const { user } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
 
-    const { data: aClasses = [] } = useQuery(
+    const { data: aClasses = [], refetch } = useQuery(
         ['approvedClasses'], async () => {
             const res = await axiosSecure.get('/approvedClasses');
             return res.data;
         }
     )
+
+    const handleAddToCart = (item) => {
+        const { className, image, instructorName, price, seats, _id, email } = item;
+
+        if (user && user.email) {
+
+            const cartItem = { classId: _id, className, instructorName, image, price, seats, email: user.email, insEmail: email }
+            console.log(cartItem);
+
+
+            axiosSecure.post('/carts', cartItem)
+                .then(data => {
+                    if (data.data.insertedId) {
+                        refetch();
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'This class successfully added',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                })
+        }
+        else {
+            Swal.fire({
+                title: 'To Add Please Login',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Login'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login', { state: { from: location } })
+                }
+            })
+        }
+    }
+
+    
 
     return (
         <div className="mx-auto mb-10">
@@ -38,7 +82,7 @@ const ApprovedClass = () => {
                                 </div>
 
 
-                                <button disabled={ !user || isAdmin || isInstructor || aClass.seats === 0} className={`py-2 px-3 w-full mt-5 font-semibold rounded-lg hover:shadow-lg text-white ${( isAdmin || !user || isInstructor || aClass.seats === 0) ? 'bg-gray-400' : 'bg-[#DC2751]'
+                                <button onClick={() => handleAddToCart(aClass)} disabled={isAdmin || isInstructor || aClass.seats === 0 } className={`py-2 px-3 w-full mt-5 font-semibold rounded-lg hover:shadow-lg text-white ${(isAdmin || isInstructor || aClass.seats === 0 ) ? 'bg-gray-400' : 'bg-[#DC2751]'
                                     }`}>Add the Class</button>
 
 

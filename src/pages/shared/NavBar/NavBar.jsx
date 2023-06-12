@@ -4,7 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 import { toast } from "react-toastify";
 import useAdmin from "../../../hooks/useAdmin";
 import useInstructor from "../../../hooks/useInstructor";
-import { FaBookmark } from "react-icons/fa";
+import { FaCartArrowDown } from "react-icons/fa";
 
 const NavBar = () => {
 
@@ -39,7 +39,7 @@ const NavBar = () => {
         }
 
         {
-            !isInstructor && !isAdmin && user ? <div><span className="flex"><FaBookmark /> <span className="badge badge-secondary ml-1">+{cart?.length || 0}</span></span></div> : ''
+            !isInstructor && !isAdmin && user ? <div><span className="flex"><FaCartArrowDown /> <span className="badge badge-secondary ml-1">+{cart?.length || 0}</span></span></div> : ''
         }
 
         {
