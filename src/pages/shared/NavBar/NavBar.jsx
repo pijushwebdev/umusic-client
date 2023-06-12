@@ -5,10 +5,12 @@ import { toast } from "react-toastify";
 import useAdmin from "../../../hooks/useAdmin";
 import useInstructor from "../../../hooks/useInstructor";
 import { FaCartArrowDown } from "react-icons/fa";
+import useCart from "../../../hooks/useCart";
 
 const NavBar = () => {
 
     const { user, logOut } = useAuth();
+    const [cart] = useCart();
 
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
@@ -20,8 +22,6 @@ const NavBar = () => {
                 toast.success("Logout Successful")
             })
     }
-    const cart = [];
-
 
 
     const navOptions = <>

@@ -6,6 +6,7 @@ import useInstructor from "../../hooks/useInstructor";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import useCart from "../../hooks/useCart";
 
 
 const ApprovedClass = () => {
@@ -16,8 +17,11 @@ const ApprovedClass = () => {
     const { user } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
+    const [cart,refetch] = useCart()
 
-    const { data: aClasses = [], refetch } = useQuery(
+    console.log(cart);
+
+    const { data: aClasses = [] } = useQuery(
         ['approvedClasses'], async () => {
             const res = await axiosSecure.get('/approvedClasses');
             return res.data;
@@ -82,7 +86,7 @@ const ApprovedClass = () => {
                                 </div>
 
 
-                                <button onClick={() => handleAddToCart(aClass)} disabled={isAdmin || isInstructor || aClass.seats === 0 } className={`py-2 px-3 w-full mt-5 font-semibold rounded-lg hover:shadow-lg text-white ${(isAdmin || isInstructor || aClass.seats === 0 ) ? 'bg-gray-400' : 'bg-[#DC2751]'
+                                <button onClick={() => handleAddToCart(aClass)} disabled={isAdmin || isInstructor || aClass.seats === 0 || cart.some(i => i.classId === aClass._id)} className={`py-2 px-3 w-full mt-5 font-semibold rounded-lg hover:shadow-lg text-white ${(isAdmin || isInstructor || aClass.seats === 0 || cart.some(i => i.classId === aClass._id)) ? 'bg-gray-400' : 'bg-[#DC2751]'
                                     }`}>Add the Class</button>
 
 
