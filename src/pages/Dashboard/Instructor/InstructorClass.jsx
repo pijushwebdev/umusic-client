@@ -9,7 +9,7 @@ const InstructorClass = () => {
     
 
 
-    const { data: instClasses = [], refetch } = useQuery(
+    const { data: instClasses = [] } = useQuery(
         ['instClasses'], async () => {
             const res = await axiosSecure.get('/instructorClass');
             return res.data;

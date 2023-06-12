@@ -1,10 +1,10 @@
-// import React from 'react';
 
 import { NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { toast } from "react-toastify";
 import useAdmin from "../../../hooks/useAdmin";
 import useInstructor from "../../../hooks/useInstructor";
+import { FaBookmark } from "react-icons/fa";
 
 const NavBar = () => {
 
@@ -20,21 +20,32 @@ const NavBar = () => {
                 toast.success("Logout Successful")
             })
     }
+    const cart = [];
+
 
 
     const navOptions = <>
         <li className="hover:text-white"><NavLink to='/'>Home</NavLink></li>
         <li className="hover:text-white"><NavLink to='/instructors'>Instructors</NavLink></li>
         <li><NavLink to='/classes'>Classes</NavLink></li>
-        <li>
-            {
-                isAdmin ? <NavLink to='/dashboard/manageUsers'>Dashboard</NavLink> : isInstructor ? <NavLink to='/dashboard/addClass'>Dashboard</NavLink> : <NavLink to='/dashboard/selectedClasses'>Dashboard</NavLink>
-            }
-        </li>
+
+        {
+            user &&
+            <li>
+                {
+                    isAdmin ? <NavLink to='/dashboard/manageUsers'>Dashboard</NavLink> : isInstructor ? <NavLink to='/dashboard/addClass'>Dashboard</NavLink> : <NavLink to='/dashboard/selectedClasses'>Dashboard</NavLink>
+                }
+            </li>
+        }
+
+        {
+            !isInstructor && !isAdmin && user ? <div><span className="flex"><FaBookmark /> <span className="badge badge-secondary ml-1">+{cart?.length || 0}</span></span></div> : ''
+        }
+
         {
             user ? <>
                 <li><button onClick={handleLogOut}>SignOut</button></li>
-                <li><NavLink to='/profile'><img className="rounded-full w-10" title={user?.displayName} src={user?.photoURL} alt="icon" /></NavLink></li>
+                <li><NavLink to='/profile'><img className="rounded-full w-10 h-10" title={user?.displayName} src={user?.photoURL} alt="icon" /></NavLink></li>
             </> : <>
                 <li><NavLink to='/login'>SignIn</NavLink></li>
             </>
