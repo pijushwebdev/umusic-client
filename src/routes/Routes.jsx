@@ -14,6 +14,7 @@ import SelectedClass from "../pages/Dashboard/Student/SelectedClass";
 import Payment from "../pages/Dashboard/Student/Payment";
 import EnrolledClass from "../pages/Dashboard/Student/EnrolledClass";
 import PaymentHistory from "../pages/Dashboard/Student/PaymentHistory";
+import ErrorPage from "../../ErrorPage";
 
 
 
@@ -81,5 +82,9 @@ export const router = createBrowserRouter([
                 element: <PaymentHistory></PaymentHistory>
             }
         ]
+    },
+    {
+        path: '*',
+        element:<ErrorPage></ErrorPage>
     }
 ])
