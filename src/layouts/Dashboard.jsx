@@ -1,5 +1,5 @@
-import { NavLink, Outlet } from "react-router-dom";
-import { FaBookOpen, FaHome, FaBook, FaChalkboardTeacher, FaUsers, FaWallet } from "react-icons/fa";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { FaBookOpen, FaHome, FaBook, FaChalkboardTeacher, FaUsers, FaWallet, FaSignOutAlt } from "react-icons/fa";
 import { MdMenuOpen } from "react-icons/md"
 import { BiBookBookmark, BiBook } from "react-icons/bi"
 import { BsBook } from "react-icons/bs"
@@ -7,11 +7,22 @@ import { SiGoogleclassroom } from "react-icons/si"
 import { ToastContainer } from "react-toastify";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
+import useAuth from "../hooks/useAuth";
 
 const Dashboard = () => {
 
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
+    const {  logOut } = useAuth();
+    const navigate = useNavigate();
+
+    
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                navigate('/');
+            })
+    }
 
     return (
         <>
@@ -61,6 +72,7 @@ const Dashboard = () => {
                         <li><NavLink to="/"><FaHome /> Home</NavLink></li>
                         <li><NavLink to="/instructors"><FaChalkboardTeacher /> Instructors</NavLink></li>
                         <li><NavLink to="/classes"><FaBookOpen />Classes</NavLink></li>
+                        <li><button className="text-white" onClick={handleLogOut}><FaSignOutAlt/>SignOut</button></li>
 
 
                     </ul>

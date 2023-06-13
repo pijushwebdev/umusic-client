@@ -90,7 +90,11 @@ const CheckOutForm = ({ product, price }) => {
                 cartId: product._id,
                 classId: product.classId,
                 status: 'paid and pending serve',
-                className: product.className
+                className: product.className,
+                seats: product.seats,
+                instructorName: product.instructorName,
+                classImage: product.image,
+                instructorEmail: product.insEmail
             }
             axiosSecure.post('/payment', payment)
                 .then(res => {

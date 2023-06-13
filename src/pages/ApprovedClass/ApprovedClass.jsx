@@ -76,9 +76,9 @@ const ApprovedClass = () => {
                 {
                     aClasses.map(aClass => <div key={aClass._id}>
                         <div className={`card bg-base-100 shadow-xl ${aClass.seats === 0 ? 'bg-red-700' : ''}`}>
-                            <figure><img src={aClass.image} alt="class image" /></figure>
-                            <div className="card-body pt-2">
-                                <h2 className="card-title">Class Name: {aClass.className}</h2>
+                            <figure><img className="h-56 w-full" src={aClass.image} alt="class image" /></figure>
+                            <div className="card-body h-60 pt-2">
+                                <h2 className="card-title">Class Name: {aClass.className.slice(0,30)}</h2>
                                 <p>Instructor: {aClass.instructorName}</p>
                                 <div className="card-actions justify-start">
                                     <div className="badge badge-outline">Available Seats: {aClass.seats}</div>

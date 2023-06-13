@@ -13,7 +13,7 @@ const SignIn = () => {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
-    const [user,setUser] = useState(null);
+    const [user, setUser] = useState(null);
     const [show, setShow] = useState(false)
     const location = useLocation();
     const navigate = useNavigate();
@@ -33,9 +33,10 @@ const SignIn = () => {
                 if (user) {
                     reset();
                     toast.success("Login Successful");
+                    navigate(from, { replace: true })
                 }
-                navigate(from, { replace: true })
-            })
+
+            }).catch(error => toast.error(error.message))
 
     }
 
@@ -51,10 +52,10 @@ const SignIn = () => {
                         if (data.data.insertedId) {
                             toast.success("SignUp Successful")
                         }
-                        
+
                     })
                     .catch(error => toast.error(error.message))
-                
+
                 navigate(from, { replace: true });
                 toast.success("SignIn Successful")
             })
@@ -62,20 +63,24 @@ const SignIn = () => {
 
     const handleFacebookSignIn = () => {
         facebookSignIn()
-        .then(res => {
-            const loggedUser = res.user;
-            setUser(loggedUser)
-            // console.log(loggedUser);
-            const saveUser = { name: user.displayName, email: user.email, image: user.photoURL };
+            .then(res => {
+                const loggedUser = res.user;
+                setUser(loggedUser)
+                // console.log(loggedUser);
+                const saveUser = { name: user.displayName, email: user.email, image: user.photoURL };
 
-            axiosSecure.post('/users', saveUser)
-                .then((data) => {
-                    if (data.data.insertedId) {
-                        toast.success("SignUp Successful")
-                    }
-                    navigate(from, { replace: true });
-                })
-        })
+                axiosSecure.post('/users', saveUser)
+                    .then((data) => {
+                        if (data.data.insertedId) {
+                            toast.success("SignUp Successful")
+                        }
+                        navigate(from, { replace: true });
+                    })
+                    .catch(error => toast.error(error.message))
+                    
+                navigate(from, { replace: true });
+                toast.success("SignIn Successful")
+            })
 
     }
 

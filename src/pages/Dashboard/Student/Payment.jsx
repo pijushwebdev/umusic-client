@@ -3,6 +3,7 @@ import useCart from "../../../hooks/useCart";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckOutForm from "./CheckOutForm";
+import SectionTitle from "../../../components/SectionTitle";
 
 const payment_api_key = import.meta.env.VITE_Payment_Gateway_PK;
 
@@ -23,6 +24,7 @@ const Payment = () => {
 
     return (
         <div>
+            <SectionTitle heading='Payment' subHeading='Card'></SectionTitle>
             
         {
             product && 
