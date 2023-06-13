@@ -1,38 +1,16 @@
-import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import SectionTitle from "../../../components/SectionTitle";
 import {FaSync} from 'react-icons/fa'
-import useAuth from "../../../hooks/useAuth";
+import useInstEnrollClasses from "../../../hooks/useInstEnrollClasses";
+import useInstClasses from "../../../hooks/useInstClasses";
 
 const InstructorClass = () => {
 
-    const [axiosSecure] = useAxiosSecure();
-    const {user} = useAuth();
-    
-
-    const { data: instClasses = [], refetch } = useQuery(
-        ['instClasses'], async () => {
-            const res = await axiosSecure.get(`/instClasses?email=${user?.email}`);
-            return res.data;
-        }
-    )
-    const { data: instEnrollClass = [] } = useQuery(
-        ['instEnrollClass'], async () => {
-            const res = await axiosSecure.get(`/instEnrollClass?email=${user?.email}`);
-            return res.data;
-        }
-    )
-
-    const handleRefresh = () => {
-        refetch();
-    }
-
+    const [instEnrollClass] = useInstEnrollClasses();
+    const [instClasses] = useInstClasses();
 
     return (
         <div>
             <SectionTitle heading='My Classes'></SectionTitle>
-
-            <button onClick={handleRefresh} title="refresh" className="py-3 px-3 rounded-md  text-lg btn-ghost"><FaSync/></button>
 
 
             <div className="overflow-x-auto">

@@ -29,6 +29,7 @@ const Footer = () => {
                 <div className="items-center grid-flow-col">
                     <img className="w-32 rounded-md" src="https://i.ibb.co/DLsg5kg/inlineguitar.png" alt="" />
                     <p>Umusic company ltd. <br />Expend your abilities</p>
+                    <p> <br />+12 1254625</p>
                 </div>
                 <div className="md:place-self-center md:justify-self-end">
                     <div className="grid grid-flow-col gap-4">
