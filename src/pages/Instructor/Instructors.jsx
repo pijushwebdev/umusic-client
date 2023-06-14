@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import SectionTitle from "../../components/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 
 const Instructors = () => {
@@ -15,7 +16,10 @@ const Instructors = () => {
 
     return (
         <>
-            <SectionTitle heading='All Instructors' subHeading='Show'></SectionTitle>
+            <Helmet>
+                <title>Instructors | Umusic</title>
+            </Helmet>
+            <SectionTitle heading='All Instructors'></SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mb-10 mx-3 md:mx-0">
                 {
                     instructors.map(instructor => <div key={instructor._id}>

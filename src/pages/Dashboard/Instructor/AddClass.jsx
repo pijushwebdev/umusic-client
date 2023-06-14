@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const image_hosting_token = import.meta.env.VITE_Image_Token;
 
@@ -48,6 +49,9 @@ const AddClass = () => {
     }
     return (
         <>
+            <Helmet>
+                <title>Add Class | Umusic</title>
+            </Helmet>
             <h1 className="text-4xl text-center font-bold my-10">Add a Class!</h1>
             <div className="grid grid-cols-1 m-4 md:m-0">
 

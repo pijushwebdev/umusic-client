@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import SectionTitle from "../../../components/SectionTitle";
 import useEnroll from "../../../hooks/useEnroll";
 
@@ -8,6 +9,9 @@ const EnrolledClass = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Enrolled Classes | Umusic</title>
+            </Helmet>
             <SectionTitle heading='Enrolled Classes'></SectionTitle>
 
             <div>

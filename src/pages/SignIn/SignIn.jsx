@@ -6,6 +6,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaFacebook, FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 
 const SignIn = () => {
@@ -77,7 +78,7 @@ const SignIn = () => {
                         navigate(from, { replace: true });
                     })
                     .catch(error => toast.error(error.message))
-                    
+
                 navigate(from, { replace: true });
                 toast.success("SignIn Successful")
             })
@@ -86,6 +87,9 @@ const SignIn = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Sign in | Umusic</title>
+            </Helmet>
             <h1 className="text-4xl text-center font-bold my-10">Sign In Now!</h1>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 m-4 md:m-0">
                 <div className="flex flex-col justify-center md:order-2">

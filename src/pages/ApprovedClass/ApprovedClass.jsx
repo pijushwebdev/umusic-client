@@ -7,6 +7,7 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useCart from "../../hooks/useCart";
+import { Helmet } from "react-helmet-async";
 
 
 const ApprovedClass = () => {
@@ -71,7 +72,10 @@ const ApprovedClass = () => {
 
     return (
         <div className="mx-auto mb-10">
-            <SectionTitle heading='All Classes' subHeading='Approved'></SectionTitle>
+            <Helmet>
+                <title>All Classes | Umusic</title>
+            </Helmet>
+            <SectionTitle heading='All Classes'></SectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mx-3  md:mx-0">
                 {
                     aClasses.map(aClass => <div key={aClass._id}>

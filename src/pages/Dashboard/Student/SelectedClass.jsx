@@ -3,6 +3,7 @@ import SectionTitle from "../../../components/SectionTitle";
 import useCart from "../../../hooks/useCart";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -44,7 +45,10 @@ const SelectedClass = () => {
     // console.log(cart);
     return (
         <div>
-            <SectionTitle heading='Selected Classes' subHeading='Student'></SectionTitle>
+            <Helmet>
+                <title>Selected Classes | Umusic</title>
+            </Helmet>
+            <SectionTitle heading='Selected Classes'></SectionTitle>
             <div>
                 <div className="overflow-x-auto">
                     <table className="table">

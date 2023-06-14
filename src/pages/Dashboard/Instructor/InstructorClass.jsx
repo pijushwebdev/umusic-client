@@ -2,6 +2,7 @@ import SectionTitle from "../../../components/SectionTitle";
 import {FaSync} from 'react-icons/fa'
 import useInstEnrollClasses from "../../../hooks/useInstEnrollClasses";
 import useInstClasses from "../../../hooks/useInstClasses";
+import { Helmet } from "react-helmet-async";
 
 const InstructorClass = () => {
 
@@ -10,6 +11,9 @@ const InstructorClass = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>My Classes | Umusic</title>
+            </Helmet>
             <SectionTitle heading='My Classes'></SectionTitle>
 
 

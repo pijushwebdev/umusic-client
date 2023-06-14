@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { FaChalkboardTeacher, FaTrashAlt, FaUserShield } from "react-icons/fa";
 import SectionTitle from "../../../components/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 
 const ManageUsers = () => {
@@ -89,9 +90,12 @@ const ManageUsers = () => {
     }
     return (
         <>
+            <Helmet>
+                <title>Manage Users | Umusic</title>
+            </Helmet>
             <div className="bg-[#F3F3F3] w-full h-full">
 
-                <SectionTitle heading='Manage All Users' subHeading='Admin'></SectionTitle>
+                <SectionTitle heading='Manage All Users'></SectionTitle>
 
                 <div className="flex justify-center p-2 md:p-0">
 

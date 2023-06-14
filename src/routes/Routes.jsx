@@ -15,6 +15,9 @@ import Payment from "../pages/Dashboard/Student/Payment";
 import EnrolledClass from "../pages/Dashboard/Student/EnrolledClass";
 import PaymentHistory from "../pages/Dashboard/Student/PaymentHistory";
 import ErrorPage from "../../ErrorPage";
+import PrivateRoute from "./PrivateRoute";
+import InstructorRoute from "./InstructorRoute";
+import AdminRoute from "./AdminRoute";
 
 
 
@@ -47,23 +50,23 @@ export const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <Dashboard></Dashboard>,
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
             {
                 path: 'addClass',
-                element: <AddClass></AddClass>
+                element: <InstructorRoute><AddClass></AddClass></InstructorRoute>
             },
             {
                 path: 'manageUsers',
-                element: <ManageUsers></ManageUsers>
+                element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
             },
             {
                 path: 'manageClasses',
-                element: <ManageClasses></ManageClasses>
+                element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
             },
             {
                 path: 'instructorClass',
-                element: <InstructorClass></InstructorClass>
+                element: <InstructorRoute><InstructorClass></InstructorClass></InstructorRoute>
             },
             {
                 path: 'selectedClasses',

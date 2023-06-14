@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 
 const image_hosting_token = import.meta.env.VITE_Image_Token;
@@ -69,6 +70,9 @@ const SignUp = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Sign up | Umusic</title>
+            </Helmet>
             <h1 className="text-4xl text-center font-bold my-10">Sign Up Now!</h1>
             <div className="grid grid-cols-1 m-4 md:m-0">
                 <div className="flex flex-col justify-center md:order-2">

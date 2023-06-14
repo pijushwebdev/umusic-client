@@ -4,6 +4,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckOutForm from "./CheckOutForm";
 import SectionTitle from "../../../components/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 const payment_api_key = import.meta.env.VITE_Payment_Gateway_PK;
 
@@ -24,6 +25,9 @@ const Payment = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Payment | Umusic</title>
+            </Helmet>
             <SectionTitle heading='Payment' subHeading='Card'></SectionTitle>
             
         {

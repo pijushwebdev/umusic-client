@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
 import SectionTitle from "../../../components/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 
 const PaymentHistory = () => {
@@ -18,6 +19,9 @@ const PaymentHistory = () => {
     )
     return (
         <div>
+            <Helmet>
+                <title>Payment History | Umusic</title>
+            </Helmet>
             <SectionTitle heading='Payment History' subHeading='Expenses'></SectionTitle>
             <div className="overflow-x-auto">
                     <table className="table">
