@@ -23,9 +23,9 @@ const TopInstructor = () => {
                     topInstructor.map(item => <div key={item._id}>
 
                         <div className="card bg-base-100 shadow-xl">
-                            <figure><img className="h-56 w-full" src={item.image} alt="class image" /></figure>
+                            <figure><img className="h-72 w-full" src={item.image} alt="class image" /></figure>
                             <div className="card-body">
-                                <h2 className="card-title">Class Name: {item.name}</h2>
+                                <h2 className="card-title">Name: {item.name}</h2>
                                    
                             </div>
                         </div>
