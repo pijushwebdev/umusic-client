@@ -6,7 +6,7 @@ const TopInstructor = () => {
 
 
     useEffect( () => {
-        fetch('http://localhost:5000/topInstructor')
+        fetch('https://umusic-server.vercel.app/topInstructor')
         .then(response => response.json())
         .then(data => {
             console.log(data);

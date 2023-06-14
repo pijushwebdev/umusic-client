@@ -40,7 +40,7 @@ const ClassCard = ({ myClass, refetch }) => {
 
     const handleAllowClick = (_id) => {
 
-        fetch(`http://localhost:5000/classAllow/${_id}`, {
+        fetch(`https://umusic-server.vercel.app/classAllow/${_id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -55,7 +55,7 @@ const ClassCard = ({ myClass, refetch }) => {
 
     const handleDenyClick = (_id) => {
 
-        fetch(`http://localhost:5000/classDeny/${_id}`, {
+        fetch(`https://umusic-server.vercel.app/classDeny/${_id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

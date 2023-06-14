@@ -21,7 +21,7 @@ const SelectedClass = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/carts/${item._id}`, {
+                fetch(`https://umusic-server.vercel.app/carts/${item._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

@@ -6,7 +6,7 @@ const TopClassSection = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/topClasses')
+        fetch('https://umusic-server.vercel.app/topClasses')
             .then(response => response.json())
             .then(data => {
                 console.log(data);
