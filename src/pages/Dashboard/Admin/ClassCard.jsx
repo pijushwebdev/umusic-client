@@ -2,6 +2,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { AiOutlineSend } from 'react-icons/ai'
+import { FaBed } from "react-icons/fa";
 
 
 const ClassCard = ({ myClass, refetch }) => {
@@ -77,8 +78,8 @@ const ClassCard = ({ myClass, refetch }) => {
                     <p className="text-lg font-medium">Instructor: {instructorName}</p>
                     <p>Email: {email}</p>
                     <div className="grid grid-cols-3 gap-2">
-                        <p className="badge badge-outline">$ {price}</p>
-                        <p className="badge badge-outline">Seats: {seats}</p>
+                        <p className="badge badge-outline" title="fees">$ {price}</p>
+                        <p className="badge flex gap-2 badge-outline" title="Seats Number"><FaBed/> {seats}</p>
                         <p className="badge badge-outline">{status}</p>
                     </div>
 
