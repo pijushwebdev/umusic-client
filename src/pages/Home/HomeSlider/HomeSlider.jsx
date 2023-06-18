@@ -67,7 +67,7 @@ const HomeSlider = () => {
                     </div>
 
                     <div className="absolute left-1/2 hidden md:block border rounded-3xl py-5 border-white  bottom-40  translate-x-1/2 translate-y-1/2">
-                        <span className="text-white text-3xl border-white"><BsArrowDownShort /></span>
+                    <span className="text-white text-3xl border-white"><span className="animate-ping"><BsArrowDownShort /></span></span>
                     </div>
 
                 </div>
@@ -93,7 +93,7 @@ const HomeSlider = () => {
                     </div>
 
                     <div className="fixed left-1/2 hidden md:block  border rounded-3xl py-5 border-white  bottom-40 translate-x-1/2 translate-y-1/2">
-                        <span className="text-white text-3xl border-white"><BsArrowDownShort /></span>
+                        <span className="text-white text-3xl border-white"><span className="animate-ping"><BsArrowDownShort /></span></span>
                     </div>
 
                 </div>
@@ -119,7 +119,7 @@ const HomeSlider = () => {
                     </div>
 
                     <div className="fixed left-1/2 hidden md:block  border rounded-3xl py-5 border-white  bottom-40 translate-x-1/2 translate-y-1/2">
-                        <span className="text-white text-3xl border-white"><BsArrowDownShort /></span>
+                    <span className="text-white text-3xl border-white"><span className="animate-ping"><BsArrowDownShort /></span></span>
                     </div>
 
                 </div>

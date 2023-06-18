@@ -68,8 +68,6 @@ li button:hover{
     -webkit-animation: anim 10s infinite forwards ease-out;
     overflow: hidden;
 }
-
-
 @keyframes anim {
 
     0%,
@@ -89,6 +87,7 @@ li button:hover{
         -o-transform: scale(1.1);
     }
 }
+
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

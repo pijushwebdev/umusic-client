@@ -23,7 +23,7 @@ const MySection = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-2 gap-3'>
                 <div>
-                    <img className='w-1/2 mx-auto rounded-md' src="https://i.ibb.co/Y2NcTMT/undraw-Developer-activity-re-39tg-removebg-preview.png" alt="" />
+                    <img className='w-1/2 mx-auto rounded-md' src="https://i.ibb.co/m95s8Yy/undraw-Developer-activity-re-39tg-removebg-preview-removebg-preview.png" alt="" />
                 </div>
                 <div className='m-3 md:m-0'>
                     <h1 className='font-medium text-2xl mb-5'>About</h1>
