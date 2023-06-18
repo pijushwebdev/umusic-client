@@ -87,26 +87,29 @@ const NavBar = () => {
     // referrerpolicy="no-referrer"
     return (
         <>
-            <div className="navbar  bg-black bg-opacity-90  text-white">
-                <div className="navbar-start">
-                    <div className="dropdown">
-                        <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                        </label>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 z-30 shadow bg-slate-800 rounded-box w-72">
+            <div className="lg:relative lg:flex lg:justify-center">
+                <div className="navbar lg:mx-5 lg:fixed lg:max-w-screen-lg bg-black lg:rounded-3xl bg-opacity-90 lg:bg-opacity-30 lg:z-50 h-10 mt-0 lg:mt-3 text-white">
+                    <div className="navbar-start">
+                        <div className="dropdown ">
+                            <label tabIndex={0} className="btn top-2 left-5 btn-ghost lg:hidden">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                            </label>
+                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 z-50 shadow bg-slate-800 rounded-box w-72">
+                                {navOptions}
+                            </ul>
+                        </div>
+                        <NavLink to='/' className="p-1"><img className="w-36 h-16 p-0 m-0" src="https://i.ibb.co/DLsg5kg/inlineguitar.png" alt="" /></NavLink>
+                    </div>
+                    <div className="navbar-center hidden lg:flex">
+                        <ul className="menu flex flex-row text-lg items-center justify-center px-1">
                             {navOptions}
                         </ul>
                     </div>
-                    <NavLink to='/' className="p-1"><img className="w-36 h-20 p-0 m-0" src="https://i.ibb.co/DLsg5kg/inlineguitar.png" alt="" /></NavLink>
-                </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu flex flex-row text-lg items-center justify-center px-1">
-                        {navOptions}
-                    </ul>
-                </div>
 
+                </div>
             </div>
         </>
+
     );
 };
 

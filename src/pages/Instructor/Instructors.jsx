@@ -15,7 +15,7 @@ const Instructors = () => {
     )
 
     return (
-        <>
+        <div className="md:mt-24">
             <Helmet>
                 <title>Instructors | Umusic</title>
             </Helmet>
@@ -35,7 +35,7 @@ const Instructors = () => {
                     </div>)
                 }
             </div>
-        </>
+        </div>
 
     );
 };

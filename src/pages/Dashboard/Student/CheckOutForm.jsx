@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useAuth from "../../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 
 const CheckOutForm = ({ product, price }) => {
@@ -99,9 +100,9 @@ const CheckOutForm = ({ product, price }) => {
             axiosSecure.post('/payment', payment)
                 .then(res => {
                     console.log(res.data);
-                    // if(res.data.result.insertedId){
-                    //     // alert('successful')
-                    // }
+                    if(res.data.insertedId){
+                        toast.success('successful')
+                    }
                 })
         }
 

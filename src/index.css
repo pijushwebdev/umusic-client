@@ -4,7 +4,11 @@
 
 
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
+body{
+    font-family: 'Raleway', sans-serif;
+}
 .content {
     font-family: "Poppins", sans-serif;
 }
@@ -51,6 +55,9 @@ li button:hover{
     outline-offset: 2px;
     outline-color: transparent;
     border-color: #2A2935;
+}
+.input{
+    border: 1px solid #DC2751;
 }
 .divider:after, .divider:before{
     background-color: white;

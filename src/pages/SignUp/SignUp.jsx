@@ -69,7 +69,7 @@ const SignUp = () => {
     }
 
     return (
-        <>
+        <div className="lg:mt-24">
             <Helmet>
                 <title>Sign up | Umusic</title>
             </Helmet>
@@ -145,7 +145,7 @@ const SignUp = () => {
                 </div>
 
             </div>
-        </>
+        </div>
     );
 };
 

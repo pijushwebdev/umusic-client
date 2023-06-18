@@ -10,11 +10,11 @@ import { Helmet } from "react-helmet-async";
 
 
 const SignIn = () => {
-    const { signIn, googleSignIn, facebookSignIn } = useAuth();
+
+    const { signIn, googleSignIn, facebookSignIn, resetPassword } = useAuth();
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
-    const [user, setUser] = useState(null);
     const [show, setShow] = useState(false)
     const location = useLocation();
     const navigate = useNavigate();
@@ -30,7 +30,6 @@ const SignIn = () => {
         signIn(email, password)
             .then(res => {
                 const user = res.user;
-                setUser(user)
                 if (user) {
                     reset();
                     toast.success("Login Successful");
@@ -45,15 +44,13 @@ const SignIn = () => {
         googleSignIn()
             .then(res => {
                 const loggedUser = res.user;
-                setUser(loggedUser)
-                const saveUser = { name: user.displayName, email: user.email, image: user.photoURL };
+                const saveUser = { name: loggedUser.displayName, email: loggedUser.email, image: loggedUser.photoURL };
 
                 axiosSecure.post('/users', saveUser)
                     .then((data) => {
                         if (data.data.insertedId) {
                             toast.success("SignUp Successful")
                         }
-
                     })
                     .catch(error => toast.error(error.message))
 
@@ -66,9 +63,8 @@ const SignIn = () => {
         facebookSignIn()
             .then(res => {
                 const loggedUser = res.user;
-                setUser(loggedUser)
                 // console.log(loggedUser);
-                const saveUser = { name: user.displayName, email: user.email, image: user.photoURL };
+                const saveUser = { name: loggedUser.displayName, email: loggedUser.email, image: loggedUser.photoURL };
 
                 axiosSecure.post('/users', saveUser)
                     .then((data) => {
@@ -85,8 +81,18 @@ const SignIn = () => {
 
     }
 
+    const handleResetPassword = (data) => {
+        const email = data.email;
+        if (!email) {
+            toast.error('Please provide a email')
+        }
+        resetPassword(email)
+            .then(() => toast.success('A reset password mail has been sent'))
+            .catch(error => toast.error(error.message))
+    }
+
     return (
-        <>
+        <div className="lg:mt-24">
             <Helmet>
                 <title>Sign in | Umusic</title>
             </Helmet>
@@ -120,14 +126,19 @@ const SignIn = () => {
                                     {errors.password && <span className="text-red-600">Password is required</span>}
                                 </div>
                             </div>
+
                             <div className="flex justify-center my-5">
                                 <input className="px-3 py-2 border cursor-pointer text-lg font-semibold rounded-md w-full md:w-1/2 text-center" type="submit" value="Sign In" />
+                            </div>
+
+                            <div>
+                                <p className="text-center mt-5">Forget Password? <button onClick={handleResetPassword} className="link link-hover" >Reset Password</button></p>
                             </div>
                         </div>
                     </form>
 
                     <div>
-                        <p className="text-center mt-5">Not yet an account? <Link className="link link-hover" to='/register'>Register</Link></p>
+                        <p className="text-center mt-2">Not yet an account? <Link className="link link-hover" to='/register'>Register</Link></p>
                     </div>
 
                     <div className="divider w-full md:w-3/4 mx-auto">OR</div>
@@ -146,12 +157,12 @@ const SignIn = () => {
                 </div>
 
                 <div className="hidden md:block md:order-1">
-                    <img src="https://i.ibb.co/0jXRsbQ/Login-r.png" alt="login image" />
+                    <img className="rounded-xl" src="https://i.ibb.co/558RNYz/Login-r-removebg-preview.png" alt="login image" />
                 </div>
 
 
             </div>
-        </>
+        </div>
     );
 };
 

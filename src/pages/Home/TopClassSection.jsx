@@ -9,7 +9,7 @@ const TopClassSection = () => {
         fetch('https://umusic-server.vercel.app/topClasses')
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setTopClass(data)
             })
     }, [])
@@ -22,7 +22,7 @@ const TopClassSection = () => {
 
                         <div className="card bg-base-100 shadow-xl">
                             <figure><img className="h-56 w-full" src={item.classImage} alt="class image" /></figure>
-                            <div className="card-body">
+                            <div className="card-body h-52">
                                 <h2 className="card-title">Class Name: {item.className}</h2>
                                 <p className="font-medium text-lg">Instructor: {item.instructorName}</p>
                                 <div className="card-actions justify-start">

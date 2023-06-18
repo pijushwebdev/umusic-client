@@ -23,7 +23,7 @@ const MySection = () => {
 
             <div className='grid grid-cols-1 md:grid-cols-2 gap-3'>
                 <div>
-                    <img className='w-1/2 mx-auto rounded-md' src="https://i.ibb.co/jhCDj4h/undraw-Developer-activity-re-39tg.png" alt="" />
+                    <img className='w-1/2 mx-auto rounded-md' src="https://i.ibb.co/Y2NcTMT/undraw-Developer-activity-re-39tg-removebg-preview.png" alt="" />
                 </div>
                 <div className='m-3 md:m-0'>
                     <h1 className='font-medium text-2xl mb-5'>About</h1>
@@ -31,7 +31,7 @@ const MySection = () => {
                         of developing different, complex web application. My top three favorite resources for learning are Programming Hero, W3School, FreeCodeCamp.
                     </p>
 
-                    <button className='py-2 px-3 bg-green-700 rounded-lg' onClick={onButtonClick}>
+                    <button className='py-2 px-3 transition-all duration-700 border-y-2 border-[#DC2751]  hover:border-b-transparent border-t-transparent hover:border-t-[#DC2751] rounded-lg font-semibold' onClick={onButtonClick}>
                         Resume
                     </button>
                 </div>

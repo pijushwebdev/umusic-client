@@ -10,7 +10,8 @@ const ClassCard = ({ myClass, refetch }) => {
     // console.log(myClass);
     const [buttonsDisabled, setButtonsDisabled] = useState(false);
     const [showModal, setShowModal] = useState(false);
-    const [sendFeedback,setSendFeedback] = useState()
+    const [sendFeedback,setSendFeedback] = useState('');
+
 
     const [axiosSecure] = useAxiosSecure();
 
