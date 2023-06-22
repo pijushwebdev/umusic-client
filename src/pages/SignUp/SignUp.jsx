@@ -93,7 +93,11 @@ const SignUp = () => {
                                     <label htmlFor="name" className="label">
                                         <span className="label-text font-medium text-base">Image:</span>
                                     </label>
-                                    <input type="file" {...register("image", { required: true })} name="image" placeholder="Enter image" className="file-input file-input-bordered w-full" />
+                                    <input type="file" {...register("image", { required: true })} name="image" placeholder="Enter image" className=" w-full file:mr-4 file:py-2 file:px-4 border border-[#dc2751] focus:border-black py-2 px-3 rounded-lg
+      file:rounded-full file:border-0
+      file:text-sm file:font-semibold
+      file:bg-violet-50 file:text-[#dc2751]
+      hover:file:bg-violet-100" />
                                     {errors.image && <span className="text-red-600">Image is required</span>}
                                 </div>
 

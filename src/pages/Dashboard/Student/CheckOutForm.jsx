@@ -29,8 +29,7 @@ const CheckOutForm = ({ product, price }) => {
                     setClientSecret(res.data.clientSecret);
                 })
         }
-    },
-        [price, axiosSecure])
+    },[price, axiosSecure]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();

@@ -71,7 +71,7 @@ const ClassCard = ({ myClass, refetch }) => {
     }
     return (
         <>
-            <div className="card  bg-base-100 shadow-xl">
+            <div className="card bg-base-100 shadow-xl">
                 <figure><img className="rounded-xl h-48 w-full" src={image} alt="class image" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">Class Name: {className}</h2>

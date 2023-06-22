@@ -16,7 +16,7 @@ const TopClassSection = () => {
     return (
         <div>
             <h1 className="text-center font-bold text-4xl  my-10">Top 6 Classes</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-10 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-10 mx-3 md:mx-0 gap-3">
                 {
                     topClass.map(item => <div key={item._id}>
 

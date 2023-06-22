@@ -6,13 +6,13 @@ import axios from 'axios';
 
 
 const axiosSecure = axios.create({
-  baseURL: 'https://umusic-server.vercel.app', 
+  baseURL: 'https://umusic-server.vercel.app',
 });
 
 
 const useAxiosSecure = () => {
-  const { logOut } = useAuth(); 
-  const navigate = useNavigate(); 
+  const { logOut } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axiosSecure.interceptors.request.use((config) => {

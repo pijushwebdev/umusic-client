@@ -71,14 +71,12 @@ const SignIn = () => {
                         if (data.data.insertedId) {
                             toast.success("SignUp Successful")
                         }
-                        navigate(from, { replace: true });
                     })
                     .catch(error => toast.error(error.message))
 
                 navigate(from, { replace: true });
                 toast.success("SignIn Successful")
             })
-
     }
 
     const handleResetPassword = (data) => {
