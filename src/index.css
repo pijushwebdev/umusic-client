@@ -105,3 +105,33 @@ input::-webkit-inner-spin-button {
     height: 0px;
     background-color: #ffffff;
 }
+
+
+/* gradient background */
+
+.gradient1{
+    background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
+}
+.gradient2{
+    background-image: linear-gradient(-20deg, #ddd6f3 0%, #faaca8 100%, #faaca8 100%);
+}
+.gradient3{
+    background-image: linear-gradient(-225deg, #B6CEE8 0%, #F578DC 100%);
+}
+
+
+.background-subs{
+    background-image: url('https://i.ibb.co/9bphQ6P/newsjpg.jpg');
+    background-position: 100% 80%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.boxShadow:hover .circleCard{
+    box-shadow: 10px 10px 30px #ff8787;
+}

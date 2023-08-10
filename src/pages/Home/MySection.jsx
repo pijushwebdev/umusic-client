@@ -1,3 +1,4 @@
+import HomeSectionTitle from '../../components/HomeSectionTitle';
 import resume from '/Pijush-Sarker.pdf'
 
 const MySection = () => {
@@ -19,7 +20,7 @@ const MySection = () => {
 
     return (
         <div className='mb-10'>
-            <h1 className="text-center font-bold text-4xl  my-10">Developer Info</h1>
+            <HomeSectionTitle>Developer Info</HomeSectionTitle>
 
             <div className='grid grid-cols-1 md:grid-cols-2 gap-3'>
                 <div>

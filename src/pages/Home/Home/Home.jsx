@@ -3,6 +3,10 @@ import HomeSlider from "../HomeSlider/HomeSlider";
 import MySection from "../MySection";
 import TopClassSection from "../TopClassSection";
 import TopInstructor from "../TopInstructor";
+import Profile from "../Profile";
+import Newsletter from "../Newsletter";
+import Services from "./Services";
+import Partners from "../Partners";
 
 
 const Home = () => {
@@ -14,6 +18,10 @@ const Home = () => {
             <HomeSlider></HomeSlider>
             <TopClassSection></TopClassSection>
             <TopInstructor></TopInstructor>
+            <Profile></Profile>
+            <Services/>
+            <Newsletter/>
+            <Partners></Partners>
             <MySection></MySection>
         </>
     );
