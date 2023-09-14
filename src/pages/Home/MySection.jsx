@@ -1,5 +1,5 @@
 import HomeSectionTitle from '../../components/HomeSectionTitle';
-import resume from '/Pijush-Sarker.pdf'
+import resume from '/Pijush_Sarker_Junior_Web_Developer.pdf'
 
 const MySection = () => {
 
@@ -29,7 +29,7 @@ const MySection = () => {
                 <div className='m-3 md:m-0'>
                     <h1 className='font-medium text-2xl mb-5'>About</h1>
                     <p className='mb-5'>I am a full stack MERN developer with a passion
-                        of developing different, complex web application. My top three favorite resources for learning are Programming Hero, W3School, FreeCodeCamp.
+                        of developing different, complex web application. My top three favorite resources for learning are Docs, W3School, FreeCodeCamp.
                     </p>
 
                     <button className='py-2 px-3 transition-all duration-700 border-y-2 border-[#DC2751]  hover:border-b-transparent border-t-transparent hover:border-t-[#DC2751] rounded-lg font-semibold' onClick={onButtonClick}>

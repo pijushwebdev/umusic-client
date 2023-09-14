@@ -15,15 +15,15 @@ const TopClassSection = () => {
             })
     }, [])
     return (
-        <div>
+        <div className="container mx-auto">
             <HomeSectionTitle>Top 6 Classes</HomeSectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-10 mx-3 md:mx-0 gap-3">
                 {
                     topClass.map(item => <div key={item._id}>
 
-                        <div className="card bg-base-100 shadow-xl">
+                        <div className="card bg-base-100 hover:shadow-xl">
                             <figure><img className="h-56 w-full" src={item.classImage} alt="class image" /></figure>
-                            <div className="card-body h-52 bg-gradient-to-l from-[#ffd3d3] to-[#e99292] rounded-b-xl">
+                            <div className="card-body h-52 bg-gradient-to-l from-[#ffffff] to-[#fde2e2] rounded-b-xl">
                                 <h2 className="card-title text-[#DC2751]">Class Name: {item.className}</h2>
                                 <p className="font-medium text-[#DC2751] text-lg">Instructor: {item.instructorName}</p>
                                 <div className="card-actions justify-start">

@@ -2,7 +2,7 @@ import HomeSectionTitle from "../../../components/HomeSectionTitle";
 
 const Services = () => {
     return (
-        <>
+        <div className="container mx-auto">
             <HomeSectionTitle>Services</HomeSectionTitle>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mt-5 mb-20">
 
@@ -47,7 +47,7 @@ const Services = () => {
                 
 
             </div>
-        </>
+        </div>
     );
 };
 

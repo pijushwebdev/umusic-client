@@ -26,7 +26,7 @@ const Dashboard = () => {
 
     return (
         <>
-            <div className="drawer lg:drawer-open">
+            <div className="my-drawer lg:grid lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col">
                     <label htmlFor="my-drawer-2" className="drawer-button cursor-pointer absolute top-5 left-4 lg:hidden"> <span className="text-3xl"> <MdMenuOpen /> </span> </label>

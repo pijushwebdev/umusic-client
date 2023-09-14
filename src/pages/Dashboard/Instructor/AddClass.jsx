@@ -47,17 +47,25 @@ const AddClass = () => {
             })
 
     }
+    const frame = document.getElementById('frame');
+    function preview(event) {
+        frame.src=URL.createObjectURL(event.target.files[0]);
+    }
+
     return (
         <>
+        
             <Helmet>
                 <title>Add Class | Umusic</title>
             </Helmet>
             <h1 className="text-4xl text-center font-bold my-10">Add a Class!</h1>
             <div className="grid grid-cols-1 m-4 md:m-0">
 
+            <img id="frame" src='' width="100px" height="100px"/>
+
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="lg:w-3/4 w-full mx-auto">
-
+                    
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
 
                             <div className="form-control w-full">
@@ -88,7 +96,7 @@ const AddClass = () => {
                                 <label htmlFor="name" className="label">
                                     <span className="label-text font-medium text-base">Class Image:</span>
                                 </label>
-                                <input type="file" {...register("image", { required: true })} name="image" placeholder="Enter image" className="file-input file-input-bordered w-full" />
+                                <input onChange={preview} type="file" {...register("image", { required: true })} name="image" placeholder="Enter image" className="file-input file-input-bordered w-full" />
                                 {errors.image && <span className="text-red-600">Image is required</span>}
                             </div>
 

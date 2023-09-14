@@ -15,7 +15,7 @@ const Instructors = () => {
     )
 
     return (
-        <div className="md:mt-24">
+        <div className="md:mt-24 container mx-auto">
             <Helmet>
                 <title>Instructors | Umusic</title>
             </Helmet>

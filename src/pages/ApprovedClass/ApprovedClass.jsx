@@ -71,7 +71,7 @@ const ApprovedClass = () => {
     
 
     return (
-        <div className="mx-auto mb-10 md:mt-24">
+        <div className="container mx-auto mb-10 md:mt-24">
             <Helmet>
                 <title>All Classes | Umusic</title>
             </Helmet>

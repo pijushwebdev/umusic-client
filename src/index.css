@@ -22,6 +22,11 @@ body{
     -webkit-text-stroke: 2px white;
 }
 
+.my-drawer{
+    position: relative;
+    width: 100%;
+    grid-auto-columns: max-content auto;
+}
 
 .drawer-side a.active {
     color: white;
@@ -125,11 +130,6 @@ input::-webkit-inner-spin-button {
     background-position: 100% 80%;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
 }
 
 .boxShadow:hover .circleCard{

@@ -13,7 +13,7 @@ const InstructorRoute = ({ children }) => {
     const location = useLocation();
 
     if(loading || isInstructorLoading){
-        return <progress className="progress w-56"></progress>
+        return <span className="loading mx-auto loading-spinner text-secondary"></span>
     }
 
     if (user && isInstructor) {

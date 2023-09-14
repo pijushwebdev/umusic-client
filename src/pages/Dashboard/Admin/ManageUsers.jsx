@@ -93,16 +93,16 @@ const ManageUsers = () => {
             <Helmet>
                 <title>Manage Users | Umusic</title>
             </Helmet>
-            <div className="bg-[#F3F3F3] w-full h-full">
+            <div className="bg-[#F3F3F3] w-full h-full overflow-x-auto">
 
-                <SectionTitle heading='Manage All Users'></SectionTitle>
+                <SectionTitle heading='Manage Users'></SectionTitle>
 
-                <div className="flex justify-center p-2 md:p-0">
+                <div className="flex overflow-x-auto justify-center p-2 md:p-0">
 
                     <div className="overflow-x-auto mx-auto  bg-white rounded-sm m-5 p-5">
                         <h1 className="text-2xl font-bold my-3">Total Users: {users.length}</h1>
 
-                        <table className="table">
+                        <table className="table overflow-x-auto">
                             {/* head */}
                             <thead>
                                 <tr>

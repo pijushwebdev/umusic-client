@@ -1,5 +1,10 @@
 
 # Live LInk: https://umusic-14c6a.web.app/
+
+# Credentials
+    Admin email: admin@gmail.com Password: @rkosH01
+    Instructor:  elon@mask.com   Password: @rkosH01
+    Student: jack@gmail.com      Password: @rkosH01
 ## uMusic
     uMusic is a web application that allows users to access a platform for online learning and enrolling in music classes.
 
