@@ -64,50 +64,48 @@ const HomeSlider = () => {
                 as possible`,
     },
   ];
-  
+
   return (
     <div>
-      <div ref={sliderRef} className="keen-slider mb-10">
+      <div ref={sliderRef} className="keen-slider mb-10 relative l ">
         {slidesData.map((slide, index) => (
           <div
             key={index}
-            className="keen-slider__slide number-slide1 relative "
+            className="keen-slider__slide number-slide1 relative"
           >
             <div className=" overflow-hidden">
-              <img
-                className="bg-animation w-full"
-                src={slide.link}
-                alt=""
-              />
+              <img className="bg-animation w-full" src={slide.link} alt="" />
             </div>
 
-            <div className="absolute left-3 md:left-10 md:top-10 lg:top-32 top-0 z-10">
-              <div className="content">
-                <h2 className="lg:text-8xl md:text-4xl text-2xl font-extrabold mt-5 md:mt-10 text-white">
-                  {slide.title} <span className="block">Recording</span>
-                </h2>
+            <div className="container mx-auto">
+              <div className="absolute left-3 md:left-10 md:top-10 lg:top-32 top-0 z-10">
+                <div className="content">
+                  <h2 className="lg:text-8xl md:text-4xl text-2xl font-extrabold mt-5 md:mt-10 text-white">
+                    {slide.title} <span className="block">Recording</span>
+                  </h2>
+                </div>
+
+                <Slide>
+                  <p className="md:my-6 my-2 text-sm text-slate-300 font-normal pe-10 lg:pe-0 md:font-medium w-full md:w-1/2">
+                    {slide.description}.{" "}
+                  </p>
+                </Slide>
+
+                <button className="lg:py-4 lg:px-14 md:py-2 md:px-7 py-1 px-2 mt-3 md:mt-5 lg:mt-10 bg-[#DC2751] text-white font-semibold text-normal md:text-lg rounded-[30px]">
+                  Explore More
+                </button>
               </div>
-
-              <Slide>
-                <p className="md:my-6 my-2 text-sm text-slate-300 font-normal md:font-medium w-full lg:w-1/2">
-                  {slide.description}.{" "}
-                </p>
-              </Slide>
-
-              <button className="lg:py-4 lg:px-14 md:py-2 md:px-7 py-1 px-2 mt-3 md:mt-5 lg:mt-10 bg-[#DC2751] text-white font-semibold text-normal md:text-lg rounded-[30px]">
-                Explore More
-              </button>
-            </div>
-
-            <div className="absolute left-1/2 hidden md:block border rounded-3xl py-5 border-white  bottom-40  translate-x-1/2 translate-y-1/2">
-              <span className="text-white text-3xl border-white">
-                <span className="animate-ping">
-                  <BsArrowDownShort />
-                </span>
-              </span>
             </div>
           </div>
         ))}
+
+        <div className="absolute left-1/2 bottom-10 md:bottom-16 lg:bottom-40 md:bottom border rounded-3xl py-2 md:py-3 lg:py-5 border-white -translate-x-1/2">
+          <span className="text-white text-xl md:text-2xl lg:text-3xl border-white">
+            <span className="animate-ping">
+              <BsArrowDownShort />
+            </span>
+          </span>
+        </div>
       </div>
     </div>
   );

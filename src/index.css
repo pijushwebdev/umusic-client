@@ -136,3 +136,34 @@ input::-webkit-inner-spin-button {
 .boxShadow:hover .circleCard{
     box-shadow: 10px 10px 30px #ff8787;
 }
+
+
+
+.keen-slider:not([data-keen-slider-disabled]) .keen-slider__slide{
+    height: 400px;
+}
+
+.bg-animation{
+    height: 400px;
+}
+
+@media (min-width: 768px){
+    .keen-slider:not([data-keen-slider-disabled]) .keen-slider__slide{
+        height: 600px;
+    }
+    
+    .bg-animation{
+        height: 600px;
+    }
+}
+
+@media (min-width: 1012px){
+    .keen-slider:not([data-keen-slider-disabled]) .keen-slider__slide{
+        height: 1000px;
+    }
+    
+    .bg-animation{
+        height: 1000px;
+    }
+
+}
