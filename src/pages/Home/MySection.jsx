@@ -19,7 +19,7 @@ const MySection = () => {
     }
 
     return (
-        <div className='mb-10'>
+        <div className='mb-10 container mx-auto'>
             <HomeSectionTitle>Developer Info</HomeSectionTitle>
 
             <div className='grid grid-cols-1 md:grid-cols-2 gap-3'>

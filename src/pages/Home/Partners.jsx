@@ -3,7 +3,7 @@ import Marquee from "react-fast-marquee";
 import HomeSectionTitle from "../../components/HomeSectionTitle";
 const Partners = () => {
     return (
-        <div className="my-10">
+        <div className="my-10 container mx-auto">
 
             <HomeSectionTitle>Our Partners</HomeSectionTitle>
             <Marquee>
